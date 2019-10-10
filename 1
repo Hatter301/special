@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main() {
+	int i, n,j,q,k;
+	int** a;
+	cin >> n;
+	if (n <= 0)
+		cout << "Данные введены некорректно";
+	else {
+		k = n;
+		q = n + n - 1;
+		a = (int**)malloc(n*sizeof(int));
+		for (int i = 0; i < n; i++)
+			a[i] = (int*)malloc(q * sizeof(int));
+		for (i = n; i > 0; i -= 1) {
+			for (j = 0; j < q; j += 2)
+				a[i][j] = k;
+			k -= 1;
+			j += 1;
+			q -= 1;
+		}
+		q = n + n - 1;
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < q; j++)
+				cout << a[i][j] << " ";
+			cout << endl;
+		}
+		free(a);
+	}
+	return 0;
+}
